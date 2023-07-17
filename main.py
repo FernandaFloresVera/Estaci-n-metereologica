@@ -1,16 +1,16 @@
 import serial
 from rabbitmq import RabbitMQ
 
-ARDUINO_PORT = "/dev/ttyUSB0"
-RABBITMQ_URL = "54.243.203.221"
-RABBITMQ_USER = "babyUser"
-RABBITMQ_PASSWORD = "Piloto123"
+ARDUINO_PORT = "COM6"
+RABBITMQ_URL = "100.25.186.143"
+RABBITMQ_USER = "crzindustries"
+RABBITMQ_PASSWORD = "Colmillo12"
 
 RABBIT_SCHEMA = {
-    "name": "babyWatcher",
+    "name": "meteorological",
     "type": "topic",
     "queues": [
-        {"name": "babySensorsData", "routing_key": "new.data"},
+        {"name": "meteorologicalSensorsData", "routing_key": "new.data"},
     ],
 }
 
@@ -28,7 +28,7 @@ def main():
             line = port.readline().decode("utf-8").rstrip()
 
             # TODO: Improve hardcoded data
-            rabbit.send("babyWatcher", "new.data", line)
+            rabbit.send("meteorological", "new.data", line)
 
 
 if __name__ == "__main__":

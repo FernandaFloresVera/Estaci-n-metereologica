@@ -1,7 +1,7 @@
 from typing import Union
 import pika
 from pika.credentials import PlainCredentials
-
+ 
 
 class RabbitMQ:
     def __init__(
